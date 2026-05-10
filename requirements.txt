@@ -7,7 +7,8 @@ langchain-community==0.2.16
 langchain-huggingface==0.0.3
 huggingface-hub==0.24.6
 sentence-transformers==3.0.1
-faiss-cpu==1.8.0
+faiss-cpu
 python-dotenv==1.0.1
 langchain-google-genai
 flask
+
