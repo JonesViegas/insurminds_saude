@@ -1,0 +1,649 @@
+{
+  "metadata": {
+    "projeto": "InsurMinds Saúde",
+    "versao": "2.0",
+    "descricao": "Base de conhecimento de plano de saúde para alimentar o pipeline RAG.",
+    "clusters": [
+      "Cobertura",
+      "Reembolso",
+      "Rede Credenciada",
+      "Financeiro",
+      "Autorizações",
+      "Telemedicina",
+      "Portabilidade",
+      "Dependentes",
+      "Terapias",
+      "Exames",
+      "Maternidade",
+      "Cirurgias",
+      "Carência",
+      "Carteirinha",
+      "Coparticipação",
+      "Internação",
+      "Pronto Socorro",
+      "Cancelamento",
+      "Movimentação Cadastral",
+      "Odonto - Dentistas Credenciados",
+      "Odonto - Coberturas",
+      "Odonto - Carência",
+      "Odonto - Urgência/Emergência",
+      "Odonto - Documentação",
+      "Odonto - Radiografia",
+      "Odonto - Ortodontia",
+      "Odonto - Reembolso",
+      "Odonto - Limpeza/Tártaro",
+      "Odonto - Extração",
+      "Odonto - Canal"
+    ]
+  },
+  "corpus": [
+    {
+      "id": "COB-001",
+      "cluster": "Cobertura",
+      "subcategoria": "Coberturas obrigatórias",
+      "pergunta": "O que o plano de saúde é obrigado a cobrir?",
+      "resposta": "Todo plano de saúde registrado na ANS deve cobrir, no mínimo: consultas médicas em clínicas básicas e especializadas, exames laboratoriais e de imagem, internações (com ou sem cirurgia), urgências e emergências, partos, e tratamentos de quimioterapia e radioterapia. O Rol de Procedimentos da ANS define a lista completa e atualizada de coberturas obrigatórias.",
+      "palavras_chave": [
+        "cobertura",
+        "obrigatório",
+        "ANS",
+        "rol de procedimentos",
+        "consulta",
+        "internação"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "COB-002",
+      "cluster": "Cobertura",
+      "subcategoria": "Ressonância e exames de imagem",
+      "pergunta": "Meu plano cobre ressonância magnética?",
+      "resposta": "Sim. A ressonância magnética está no Rol de Procedimentos da ANS e é de cobertura obrigatória por todos os planos. Para solicitar, você precisa de pedido médico (solicitação de um médico credenciado ou via reembolso em qualquer médico). O agendamento pode ser feito pelo app, site ou central. Verifique na rede credenciada os centros de imagem disponíveis na sua região.",
+      "palavras_chave": [
+        "ressonância",
+        "exame de imagem",
+        "tomografia",
+        "cobertura",
+        "pedido médico"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "COB-003",
+      "cluster": "Cobertura",
+      "subcategoria": "Saúde mental",
+      "pergunta": "O plano cobre psicólogo e psiquiatra?",
+      "resposta": "Sim. Desde 2022, a ANS tornou obrigatória a cobertura de psicologia e psiquiatria em todos os planos (ambulatorial, hospitalar e referência). O número de sessões de psicologia pode variar conforme o plano, mas há garantia de cobertura mínima. Consulte a rede credenciada para profissionais disponíveis ou solicite reembolso se preferir atendimento particular.",
+      "palavras_chave": [
+        "psicólogo",
+        "psiquiatra",
+        "saúde mental",
+        "terapia",
+        "sessões",
+        "cobertura"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "COB-004",
+      "cluster": "Cobertura",
+      "subcategoria": "Tratamentos especiais",
+      "pergunta": "Meu filho autista pode continuar no plano após os 24 anos?",
+      "resposta": "Sim. Dependentes com deficiência intelectual ou física que os tornem absoluta ou relativamente incapazes têm direito à manutenção no plano por tempo indeterminado, sem limite de idade. Isso está previsto em lei (Lei nº 9.656/1998 e regulamentação da ANS). É necessário apresentar laudo médico atualizado comprovando a condição para formalizar a exceção junto à operadora.",
+      "palavras_chave": [
+        "autismo",
+        "deficiência",
+        "dependente",
+        "24 anos",
+        "limite de idade",
+        "laudo"
+      ],
+      "complexidade": "edge_case"
+    },
+    {
+      "id": "COB-005",
+      "cluster": "Cobertura",
+      "subcategoria": "Procedimentos estéticos",
+      "pergunta": "O plano cobre cirurgia plástica?",
+      "resposta": "Cirurgias plásticas puramente estéticas não são cobertas pelos planos de saúde. No entanto, cirurgias plásticas com finalidade reparadora (pós-mastectomia, pós-acidente, queimaduras graves, reconstrução após tratamento oncológico) são de cobertura obrigatória. Se houver indicação médica documentada com CID, pode haver cobertura — consulte a operadora para análise do caso.",
+      "palavras_chave": [
+        "cirurgia plástica",
+        "estética",
+        "reparadora",
+        "mastectomia",
+        "cobertura",
+        "CID"
+      ],
+      "complexidade": "composta"
+    },
+    {
+      "id": "COB-006",
+      "cluster": "Cobertura",
+      "subcategoria": "Carência",
+      "pergunta": "O que é carência e quando ela acaba?",
+      "resposta": "Carência é o período após a contratação do plano em que algumas coberturas ainda não estão disponíveis. Os prazos máximos são: 24 horas para urgências e emergências, 180 dias para partos e cesarianas, 180 dias para demais procedimentos ambulatoriais e hospitalares, e 24 meses para doenças e lesões preexistentes. Quem utiliza a portabilidade de carências pode não precisar cumprir novos prazos.",
+      "palavras_chave": [
+        "carência",
+        "prazo",
+        "cobertura",
+        "portabilidade",
+        "preexistente",
+        "24 horas"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "REM-001",
+      "cluster": "Reembolso",
+      "subcategoria": "Prazo de reembolso",
+      "pergunta": "Qual o prazo para receber o reembolso?",
+      "resposta": "A ANS determina que o reembolso deve ser pago em até 30 dias corridos após a entrega completa da documentação. Se o prazo não for cumprido, o beneficiário tem direito a juros moratórios sobre o valor. Guarde sempre os comprovantes e protocolos de solicitação. Em caso de atraso, registre reclamação na ANS pelo 0800 701 9656.",
+      "palavras_chave": [
+        "reembolso",
+        "prazo",
+        "30 dias",
+        "pagamento",
+        "atraso",
+        "ANS"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "REM-002",
+      "cluster": "Reembolso",
+      "subcategoria": "Como solicitar",
+      "pergunta": "Como solicito um reembolso?",
+      "resposta": "Para solicitar reembolso: 1) Reúna nota fiscal ou recibo do prestador com CNPJ/CPF, descrição do procedimento e CID médico; 2) Anexe o pedido médico; 3) Acesse o app, portal ou ligue para a central; 4) Envie os documentos digitalizados; 5) Guarde o número de protocolo. O valor reembolsado é baseado na tabela de referência da operadora, que pode ser inferior ao cobrado pelo prestador particular.",
+      "palavras_chave": [
+        "reembolso",
+        "solicitar",
+        "nota fiscal",
+        "documentos",
+        "protocolo",
+        "app"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "REM-003",
+      "cluster": "Reembolso",
+      "subcategoria": "Valor parcial",
+      "pergunta": "Por que recebi menos do que paguei no reembolso?",
+      "resposta": "O reembolso é calculado com base na tabela de referência da operadora (geralmente CBHPM ou tabela própria), que pode ser diferente do valor cobrado pelo médico ou clínica particular. A diferença fica a cargo do beneficiário. Se você achar o valor muito abaixo, pode contestar na ANS ou verificar se há negociação com a operadora.",
+      "palavras_chave": [
+        "reembolso parcial",
+        "tabela",
+        "CBHPM",
+        "valor",
+        "diferença",
+        "contestar"
+      ],
+      "complexidade": "composta"
+    },
+    {
+      "id": "RED-001",
+      "cluster": "Rede Credenciada",
+      "subcategoria": "Como encontrar",
+      "pergunta": "Como encontro um hospital ou médico credenciado perto de mim?",
+      "resposta": "Você pode encontrar prestadores credenciados pelo app da operadora (seção 'Rede Credenciada'), pelo portal online informando CEP e especialidade, ou ligando para a central. Filtre por: tipo de prestador (hospital, clínica, laboratório), especialidade médica e localização. Antes de agendar, confirme se o prestador ainda está na rede — o credenciamento pode mudar.",
+      "palavras_chave": [
+        "rede credenciada",
+        "hospital",
+        "médico",
+        "perto",
+        "app",
+        "CEP",
+        "credenciado"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "RED-002",
+      "cluster": "Rede Credenciada",
+      "subcategoria": "Urgência fora da rede",
+      "pergunta": "Fui atendido em uma emergência em hospital não credenciado. O plano cobre?",
+      "resposta": "Sim. Em casos de urgência e emergência, o plano é obrigado a cobrir o atendimento em qualquer estabelecimento, mesmo não credenciado, até que o paciente esteja estabilizado. Após a estabilização, a operadora pode solicitar transferência para a rede credenciada. Guarde todas as notas e solicite reembolso dos valores pagos.",
+      "palavras_chave": [
+        "urgência",
+        "emergência",
+        "hospital",
+        "não credenciado",
+        "cobertura",
+        "reembolso"
+      ],
+      "complexidade": "composta"
+    },
+    {
+      "id": "FIN-001",
+      "cluster": "Financeiro",
+      "subcategoria": "Segunda via de boleto",
+      "pergunta": "Como pego a segunda via do boleto?",
+      "resposta": "A segunda via do boleto pode ser obtida: pelo app da operadora (seção 'Financeiro' ou '2ª Via'), pelo portal online com login, ou ligando para a central de atendimento. O boleto atualizado com novo código de barras estará disponível instantaneamente no digital. Evite pagar boletos vencidos sem atualizar o valor.",
+      "palavras_chave": [
+        "boleto",
+        "segunda via",
+        "2a via",
+        "pagamento",
+        "app",
+        "venceu",
+        "portal"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "FIN-002",
+      "cluster": "Financeiro",
+      "subcategoria": "Inadimplência",
+      "pergunta": "O que acontece se eu não pagar o plano?",
+      "resposta": "Se o pagamento não for realizado, a operadora pode suspender a cobertura após 60 dias de inadimplência (para planos individuais) ou 30 dias (para planos coletivos), mediante notificação prévia de 10 dias. Após a suspensão, o contrato pode ser rescindido. Regularize o pagamento o quanto antes para evitar perda de cobertura e necessidade de cumprir novas carências ao contratar novo plano.",
+      "palavras_chave": [
+        "inadimplência",
+        "atraso",
+        "suspensão",
+        "cancelamento",
+        "60 dias",
+        "cobertura"
+      ],
+      "complexidade": "composta"
+    },
+    {
+      "id": "FIN-003",
+      "cluster": "Financeiro",
+      "subcategoria": "Reajuste",
+      "pergunta": "Por que o meu plano ficou mais caro?",
+      "resposta": "Os planos de saúde individuais têm reajuste anual regulado pela ANS (índice divulgado todo ano). Já os planos coletivos (empresariais ou por adesão) têm reajuste negociado entre operadora e contratante, podendo ser diferente. Fatores como sinistralidade do grupo, variação de custos médicos e inflação setorial influenciam no reajuste. Verifique se o índice aplicado foi devidamente comunicado.",
+      "palavras_chave": [
+        "reajuste",
+        "aumento",
+        "preço",
+        "ANS",
+        "coletivo",
+        "individual",
+        "sinistralidade"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "AUT-001",
+      "cluster": "Autorizações",
+      "subcategoria": "Como solicitar",
+      "pergunta": "Como solicito autorização para um exame ou procedimento?",
+      "resposta": "Para solicitar autorização: 1) Obtenha o pedido médico com CID, descrição do procedimento e assinatura; 2) Acesse o app, portal ou ligue para a central; 3) Envie o pedido médico; 4) Aguarde a análise (prazo máximo: 3 dias úteis para eletivos e imediato para urgências). Você receberá a confirmação por SMS, e-mail ou app. Guarde o número de autorização.",
+      "palavras_chave": [
+        "autorização",
+        "exame",
+        "procedimento",
+        "pedido médico",
+        "CID",
+        "prazo",
+        "3 dias"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "AUT-002",
+      "cluster": "Autorizações",
+      "subcategoria": "Negativa de autorização",
+      "pergunta": "Minha autorização foi negada. O que fazer?",
+      "resposta": "Se a autorização for negada, a operadora deve apresentar justificativa por escrito, indicando o fundamento técnico ou contratual. Você pode: 1) Solicitar revisão apresentando documentação complementar; 2) Registrar reclamação na ANS (www.ans.gov.br ou 0800 701 9656); 3) Acionar o Procon; 4) Buscar liminar judicial em casos urgentes. A ANS pode determinar a cobertura em até 24h para urgências.",
+      "palavras_chave": [
+        "negativa",
+        "autorização negada",
+        "recurso",
+        "ANS",
+        "judicial",
+        "liminar"
+      ],
+      "complexidade": "edge_case"
+    },
+    {
+      "id": "TEL-001",
+      "cluster": "Telemedicina",
+      "subcategoria": "Acesso",
+      "pergunta": "Como acesso a telemedicina?",
+      "resposta": "A telemedicina está disponível pelo app da operadora (seção 'Telemedicina' ou 'Consulta Online'). Você pode agendar ou acessar consultas em tempo real com clínicos gerais e algumas especialidades, sem sair de casa. O serviço costuma estar disponível 24 horas para clínica geral. Para especialidades, pode haver agendamento prévio.",
+      "palavras_chave": [
+        "telemedicina",
+        "consulta online",
+        "app",
+        "clínico geral",
+        "especialidade",
+        "24h"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "PORT-001",
+      "cluster": "Portabilidade",
+      "subcategoria": "Regras",
+      "pergunta": "Posso trocar de plano sem cumprir carência novamente?",
+      "resposta": "Sim, pela portabilidade de carências da ANS. Para ser elegível, você precisa: ter o plano ativo por no mínimo 2 anos (ou 1 ano em algumas situações), estar com os pagamentos em dia, e migrar para um plano de mesma ou inferior segmentação e preço compatível. A portabilidade elimina a necessidade de cumprir novos períodos de carência no novo plano. Consulte o Guia ANS de Planos de Saúde.",
+      "palavras_chave": [
+        "portabilidade",
+        "trocar de plano",
+        "carência",
+        "2 anos",
+        "ANS",
+        "migração"
+      ],
+      "complexidade": "composta"
+    },
+    {
+      "id": "DEP-001",
+      "cluster": "Dependentes",
+      "subcategoria": "Inclusão",
+      "pergunta": "Como incluo um dependente no plano?",
+      "resposta": "Para incluir um dependente, entre em contato com a central ou acesse o portal. Os dependentes elegíveis são: cônjuge ou companheiro(a), filhos e enteados até 24 anos (ou sem limite de idade se tiver deficiência), e dependentes econômicos comprovados. Documentos necessários: certidão de nascimento, RG, CPF e comprovante de vínculo. Prazos: cônjuge e filhos recém-nascidos têm 30 dias para inclusão sem carência.",
+      "palavras_chave": [
+        "dependente",
+        "incluir",
+        "cônjuge",
+        "filho",
+        "24 anos",
+        "carência",
+        "documentos"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "DEP-002",
+      "cluster": "Dependentes",
+      "subcategoria": "Regras empresariais",
+      "pergunta": "Qual a regra para inclusão de dependente no plano empresarial?",
+      "resposta": "Em planos empresariais (coletivos por vínculo empregatício), a inclusão de dependentes segue as regras negociadas entre a empresa e a operadora. Geralmente: há um prazo de 30 dias a partir do evento (casamento, nascimento) para incluir sem carência; fora desse prazo, pode haver carência; o custo do dependente pode ser co-financiado pelo empregador ou ser integral do funcionário. Consulte o RH da sua empresa para as condições específicas.",
+      "palavras_chave": [
+        "dependente",
+        "empresarial",
+        "coletivo",
+        "RH",
+        "inclusão",
+        "prazo",
+        "evento"
+      ],
+      "complexidade": "composta"
+    },
+    {
+      "id": "EME-001",
+      "cluster": "Cobertura",
+      "subcategoria": "Emergência",
+      "pergunta": "Tive uma emergência, o plano cobre o atendimento agora?",
+      "resposta": "Sim. Urgências e emergências têm cobertura garantida por lei mesmo dentro do período de carência, a partir das primeiras 24 horas de vigência do plano. Vá ao pronto-socorro ou hospital mais próximo da rede credenciada. Se não houver opção credenciada, qualquer hospital deve atendê-lo e o custo será reembolsado após estabilização. Ligue para a central 24h para orientações: o número está no cartão ou app.",
+      "palavras_chave": [
+        "emergência",
+        "urgência",
+        "pronto-socorro",
+        "24 horas",
+        "carência",
+        "atendimento imediato"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-001",
+      "cluster": "Reembolso",
+      "subcategoria": "Consultar valor de reembolso de consulta",
+      "pergunta": "Qual o valor de reembolso para consulta médica?",
+      "resposta": "Para consultas médicas presenciais realizadas em consultório, o plano Saúde+ possui reembolso padrão de R$ 109,76 por atendimento, conforme tabela vigente.",
+      "palavras_chave": [
+        "consulta",
+        "reembolso",
+        "consultório",
+        "médico",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-002",
+      "cluster": "Reembolso",
+      "subcategoria": "Consultar reembolso de telemedicina",
+      "pergunta": "O plano reembolsa teleconsulta?",
+      "resposta": "As consultas médicas realizadas por via remota ou não presencial possuem reembolso padrão de R$ 82,14 por atendimento.",
+      "palavras_chave": [
+        "telemedicina",
+        "consulta online",
+        "consulta remota",
+        "reembolso",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-003",
+      "cluster": "Terapias",
+      "subcategoria": "Consultar reembolso de psicoterapia",
+      "pergunta": "Qual o valor de reembolso para psicólogo?",
+      "resposta": "As sessões de psicoterapia realizadas fora da rede credenciada possuem reembolso padrão de R$ 62,18 por sessão, conforme condições do plano.",
+      "palavras_chave": [
+        "psicólogo",
+        "psicoterapia",
+        "terapia",
+        "saúde mental",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-004",
+      "cluster": "Terapias",
+      "subcategoria": "Consultar reembolso de fonoaudiologia",
+      "pergunta": "Quanto o plano reembolsa em fono?",
+      "resposta": "As sessões subsequentes de fonoaudiologia possuem reembolso padrão de R$ 58,03 por sessão, conforme tabela do plano.",
+      "palavras_chave": [
+        "fono",
+        "fonoaudiologia",
+        "reembolso",
+        "terapia",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-005",
+      "cluster": "Exames",
+      "subcategoria": "Consultar reembolso de exames laboratoriais",
+      "pergunta": "Qual o valor de reembolso para hemograma e laboratoriais?",
+      "resposta": "Os exames laboratoriais simples possuem os seguintes valores de reembolso padrão: Hemograma Completo R$ 11,15; Glicose R$ 5,20; Colesterol Total R$ 5,20; Creatinina R$ 5,20; Triglicerídios R$ 7,43.",
+      "palavras_chave": [
+        "hemograma",
+        "glicose",
+        "colesterol",
+        "laboratório",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-006",
+      "cluster": "Exames",
+      "subcategoria": "Consultar reembolso de tomografia",
+      "pergunta": "Quanto o plano reembolsa tomografia?",
+      "resposta": "Os exames de tomografia possuem os seguintes valores de reembolso padrão: Tomografia Computadorizada de Crânio R$ 251,30; Tomografia de Tórax sem contraste R$ 309,24; Tomografia de Abdômen Superior sem contraste R$ 309,24.",
+      "palavras_chave": [
+        "tomografia",
+        "crânio",
+        "abdômen",
+        "tórax",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-007",
+      "cluster": "Exames",
+      "subcategoria": "Consultar reembolso de ressonância",
+      "pergunta": "Qual o valor de reembolso para ressonância magnética?",
+      "resposta": "O exame de Ressonância Magnética de Crânio possui reembolso padrão de R$ 556,63, conforme tabela do plano.",
+      "palavras_chave": [
+        "ressonância",
+        "ressonância magnética",
+        "crânio",
+        "reembolso",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-008",
+      "cluster": "Maternidade",
+      "subcategoria": "Consultar reembolso de parto",
+      "pergunta": "Quanto o plano reembolsa parto cesárea e normal?",
+      "resposta": "Os valores padrão de reembolso para o Saúde+ são: Parto Cesárea R$ 2.692,19 e Parto Normal R$ 2.804,39, incluindo honorários médicos conforme composição prevista.",
+      "palavras_chave": [
+        "parto",
+        "cesárea",
+        "maternidade",
+        "gestação",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-009",
+      "cluster": "Cirurgias",
+      "subcategoria": "Consultar cobertura cirúrgica",
+      "pergunta": "O plano cobre cirurgia e quanto é o reembolso?",
+      "resposta": "O plano Saúde+ possui cobertura para diversos procedimentos cirúrgicos e os valores variam conforme o procedimento realizado. Exemplos: Apendicectomia complicada R$ 1.446,18; Colecistectomia R$ 2.020,00; Hérnia Discal Lombar R$ 2.441,38.",
+      "palavras_chave": [
+        "cirurgia",
+        "apendicectomia",
+        "colecistectomia",
+        "hérnia",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-010",
+      "cluster": "Carência",
+      "subcategoria": "Consultar carência",
+      "pergunta": "Qual a carência do plano?",
+      "resposta": "Os prazos de carência podem variar de acordo com o tipo de procedimento, contratação e elegibilidade. Consulte as condições gerais da apólice ou a administradora do benefício para validação dos períodos aplicáveis.",
+      "palavras_chave": [
+        "carência",
+        "prazo",
+        "utilização",
+        "contrato",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-011",
+      "cluster": "Reembolso",
+      "subcategoria": "Solicitar reembolso",
+      "pergunta": "Como solicitar reembolso no Saúde+?",
+      "resposta": "Para solicitar reembolso, é necessário apresentar documentação comprobatória do atendimento, como recibo, nota fiscal e relatório médico, conforme exigência do procedimento realizado através dos canais digitais da operadora.",
+      "palavras_chave": [
+        "solicitação",
+        "nota fiscal",
+        "recibo",
+        "documentos",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "SAUDE-012",
+      "cluster": "Cobertura",
+      "subcategoria": "Consultar cobertura de exames",
+      "pergunta": "O plano cobre mamografia, ultrassom e endoscopia?",
+      "resposta": "O plano possui cobertura para exames simples e especiais conforme segmentação contratada. Entre os exames cobertos estão Mamografia, Ultrassonografia Obstétrica, Ultrassom de Abdome Total, Endoscopia Digestiva Alta, Eletrocardiograma e outros previstos em contrato.",
+      "palavras_chave": [
+        "mamografia",
+        "ultrassom",
+        "endoscopia",
+        "exames",
+        "Saúde+",
+        "SPG Saúde+ (SP e RJ)"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "BRAD-SAUDE-001",
+      "cluster": "Rede Credenciada",
+      "subcategoria": "Consultar rede médica",
+      "pergunta": "Como encontro médicos credenciados e hospitais que aceitam Bradesco Saúde?",
+      "resposta": "Para consultar médicos, clínicas e hospitais credenciados, acesse o aplicativo Bradesco Saúde ou o site oficial. A disponibilidade da rede varia conforme o plano e região.",
+      "palavras_chave": [
+        "rede",
+        "hospital",
+        "médico",
+        "credenciado",
+        "Bradesco Saúde"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "BRAD-SAUDE-002",
+      "cluster": "Reembolso",
+      "subcategoria": "Solicitar reembolso",
+      "pergunta": "Como pedir reembolso médico e enviar nota fiscal?",
+      "resposta": "Para solicitar reembolso, acesse o aplicativo Bradesco Saúde, selecione 'Reembolso' e envie a documentação necessária, como nota fiscal, recibo e relatório médico. O prazo de análise pode variar conforme o procedimento.",
+      "palavras_chave": [
+        "reembolso",
+        "nota fiscal",
+        "recibo",
+        "despesas médicas",
+        "Bradesco Saúde"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "BRAD-SAUDE-003",
+      "cluster": "Carteirinha",
+      "subcategoria": "Emitir carteirinha",
+      "pergunta": "Como emitir a carteirinha digital ou o que fazer se perdi?",
+      "resposta": "Você pode acessar a carteirinha digital diretamente pelo aplicativo Bradesco Saúde. Caso necessário, também é possível solicitar a segunda via da carteirinha física.",
+      "palavras_chave": [
+        "carteirinha",
+        "segunda via",
+        "app",
+        "Bradesco Saúde"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "ODONTO-001",
+      "cluster": "Odonto - Coberturas",
+      "subcategoria": "Consultar cobertura odontológica",
+      "pergunta": "Meu plano cobre canal, aparelho ou limpeza?",
+      "resposta": "Os procedimentos cobertos dependem do plano contratado. Consulte a relação de coberturas no aplicativo ou entre em contato com a central de atendimento.",
+      "palavras_chave": [
+        "canal",
+        "limpeza",
+        "aparelho",
+        "cobertura",
+        "odonto",
+        "odontológico"
+      ],
+      "complexidade": "simples"
+    },
+    {
+      "id": "ODONTO-002",
+      "cluster": "Odonto - Dentistas Credenciados",
+      "subcategoria": "Buscar dentista",
+      "pergunta": "Como encontro dentistas credenciados ou clínicas odontológicas que aceitam Bradesco Dental?",
+      "resposta": "Você pode buscar dentistas e clínicas odontológicas pelo aplicativo Bradesco Dental, filtrando por região e especialidade.",
+      "palavras_chave": [
+        "dentista",
+        "clínica",
+        "rede",
+        "odontologia",
+        "Bradesco Dental"
+      ],
+      "complexidade": "simples"
+    }
+  ]
+}

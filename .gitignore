@@ -1,0 +1,14 @@
+# Arquivos de segurança (NUNCA SUBIR)
+.env
+
+# Ambientes Virtuais
+venv/
+env/
+
+# Arquivos compilados Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Arquivos gerados dinamicamente
+faiss_index/

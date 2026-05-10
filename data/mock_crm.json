@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "projeto": "InsurMinds Saúde — Chatbot Telegram",
+    "versao": "2.0",
+    "descricao": "Mock CRM de plano de saúde com 4 perfis cobrindo todas as personas do documento lean.",
+    "personas": ["Beneficiário Idoso", "RH Empresarial", "Usuário Premium", "Jovem Digital"]
+  },
+  "clientes": [
+    {
+      "cliente_id": 1001,
+      "cpf": "111.111.111-11",
+      "nome": "Maria Souza",
+      "data_nascimento": "1948-03-15",
+      "telefone": "(11) 91111-1111",
+      "email": "maria.souza@email.com",
+      "persona": "Beneficiário Idoso",
+      "plano": "Básico Ambulatorial",
+      "status_pagamento": "ativo",
+      "coparticipacao": true,
+      "apolice": {
+        "numero": "BRD-1001",
+        "inicio_vigencia": "2022-06-01",
+        "carencia_restante": 0,
+        "tipo": "individual",
+        "acomodacao": "enfermaria"
+      },
+      "financeiro": {
+        "ultima_fatura": "2026-05-01",
+        "valor": 420.00,
+        "status": "pago",
+        "proximo_vencimento": "2026-06-01"
+      },
+      "sinistros": [
+        {
+          "sinistro_id": "SIN-1001",
+          "tipo": "autorização de exame",
+          "procedimento": "Raio-X de tórax",
+          "status": "autorizado",
+          "data": "2026-04-20"
+        }
+      ],
+      "dependentes": []
+    },
+    {
+      "cliente_id": 1002,
+      "cpf": "222.222.222-22",
+      "nome": "Carlos Drummond (RH Empresarial)",
+      "data_nascimento": "1980-07-10",
+      "telefone": "(11) 92222-2222",
+      "email": "carlos.rh@empresa.com.br",
+      "persona": "RH Empresarial",
+      "plano": "Empresarial Plus",
+      "status_pagamento": "ativo",
+      "coparticipacao": false,
+      "apolice": {
+        "numero": "BRD-1002",
+        "inicio_vigencia": "2023-01-01",
+        "carencia_restante": 0,
+        "tipo": "coletivo_empresarial",
+        "acomodacao": "apartamento"
+      },
+      "financeiro": {
+        "ultima_fatura": "2026-05-01",
+        "valor": 4200.00,
+        "status": "pago",
+        "proximo_vencimento": "2026-06-01"
+      },
+      "sinistros": [],
+      "dependentes": [
+        {"nome": "Ana Drummond", "parentesco": "cônjuge", "data_nascimento": "1983-02-14"},
+        {"nome": "Pedro Drummond", "parentesco": "filho", "data_nascimento": "2010-09-01"},
+        {"nome": "Beatriz Drummond", "parentesco": "filha", "data_nascimento": "2013-11-30"}
+      ],
+      "funcionarios_cadastrados": 12
+    },
+    {
+      "cliente_id": 1003,
+      "cpf": "333.333.333-33",
+      "nome": "Roberto Faria",
+      "data_nascimento": "1975-12-22",
+      "telefone": "(11) 93333-3333",
+      "email": "roberto.faria@gmail.com",
+      "persona": "Usuário Premium",
+      "plano": "Premium Nacional",
+      "status_pagamento": "ativo",
+      "coparticipacao": false,
+      "apolice": {
+        "numero": "BRD-1003",
+        "inicio_vigencia": "2020-03-01",
+        "carencia_restante": 0,
+        "tipo": "individual",
+        "acomodacao": "apartamento"
+      },
+      "financeiro": {
+        "ultima_fatura": "2026-05-01",
+        "valor": 1850.44,
+        "status": "pago",
+        "proximo_vencimento": "2026-06-01"
+      },
+      "sinistros": [
+        {
+          "sinistro_id": "SIN-9921",
+          "tipo": "reembolso",
+          "procedimento": "Consulta psiquiátrica particular",
+          "status": "em análise",
+          "data_abertura": "2026-04-10",
+          "valor_solicitado": 480.00,
+          "previsao_conclusao": "2026-05-10"
+        }
+      ],
+      "dependentes": [
+        {"nome": "Lucia Faria", "parentesco": "cônjuge", "data_nascimento": "1978-05-18"}
+      ]
+    },
+    {
+      "cliente_id": 1004,
+      "cpf": "444.444.444-44",
+      "nome": "Julia Mendes",
+      "data_nascimento": "2001-08-05",
+      "telefone": "(11) 94444-4444",
+      "email": "julia.mendes@outlook.com",
+      "persona": "Jovem Digital",
+      "plano": "Smart Básico",
+      "status_pagamento": "ativo",
+      "coparticipacao": true,
+      "apolice": {
+        "numero": "BRD-1004",
+        "inicio_vigencia": "2025-01-10",
+        "carencia_restante": 0,
+        "tipo": "individual",
+        "acomodacao": "enfermaria"
+      },
+      "financeiro": {
+        "ultima_fatura": "2026-05-01",
+        "valor": 310.00,
+        "status": "pendente",
+        "proximo_vencimento": "2026-05-15",
+        "dias_atraso": 0
+      },
+      "sinistros": [],
+      "dependentes": [],
+      "servicos_digitais": {
+        "telemedicina": true,
+        "app_ativo": true,
+        "carteirinha_digital": true
+      }
+    }
+  ]
+}
