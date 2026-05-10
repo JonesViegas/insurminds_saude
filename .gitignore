@@ -11,4 +11,3 @@ __pycache__/
 *.pyo
 
 # Arquivos gerados dinamicamente
-faiss_index/
